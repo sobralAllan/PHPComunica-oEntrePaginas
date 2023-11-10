@@ -9,11 +9,15 @@
 <body>
     <?php 
         include 'cadastro.php';
-        include 'paginaCadastro.php';
+        session_start();
+        $cpf = $_SESSION['cpf'];
+        $nome = $_SESSION['nome'];
+        $tele = $_SESSION['telefone'];
+        $end = $_SESSION['endereco'];
+        $cid = $_SESSION['cidade'];   
 
-        $cadastroUm = consultarObjeto();
-
-        echo $cadastroUm->imprimir();    
+        $cad = new Cadastro($cpf, $nome, $tele, $end, $cid);
+        echo $cad->imprimir();
     ?>
 </body>
 </html>
